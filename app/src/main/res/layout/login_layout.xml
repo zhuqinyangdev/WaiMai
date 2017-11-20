@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
-        android:background="#f8f8f8">
+        android:background="#ededed">
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,11 +69,11 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="2"
                     android:text="用户名"
                     android:textColor="#000000"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/LoginId"
@@ -81,6 +81,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="6"
                     android:background="@drawable/login_edittext_shape"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
                     android:hint="手机号/邮箱"
                     android:paddingLeft="5dp" />
 
@@ -98,11 +99,11 @@
                     android:layout_alignBottom="@+id/linearLayout"
                     android:layout_alignLeft="@+id/linearLayout"
                     android:layout_alignStart="@+id/linearLayout"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="2"
                     android:text="    密码"
                     android:textColor="#000000"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
                 <EditText
                     android:id="@+id/loginPwd"
@@ -110,6 +111,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="6"
                     android:background="@drawable/login_edittext_shape"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
                     android:hint="密码"
                     android:paddingLeft="5dp" />
 
@@ -126,21 +128,29 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
                 <TextView
+                    android:id="@+id/forget_pwd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#42b4d8"
                     android:text="忘记密码"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:textColor="#42b4d8"
-                    android:text="注册新用户"/>
+
             </FrameLayout>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/linearLayout"
+            android:layout_alignEnd="@+id/linearLayout"
+            android:layout_alignRight="@+id/linearLayout"
+            android:layout_gravity="right"
+            android:text="注册新用户"
+            android:textColor="#42b4d8" />
 
     </RelativeLayout>
 
