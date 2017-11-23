@@ -8,6 +8,7 @@
         android:id="@+id/shop_photo"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/wanzhoukaoyu"/>
 
     <LinearLayout
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="#000000"
+            android:textSize="18dp"
             android:text="万州烤鱼"/>
     </LinearLayout>
 
@@ -55,27 +57,37 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     android:textColor="#17bdc0"
                     android:text="￥"/>
 
                 <TextView
-                    android:id="@+id/commodity_price"
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textColor="#17bdc0"
+                    android:textSize="18dp"
                     android:text="108"/>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:text="门市价" />
 
                 <TextView
                     android:id="@+id/rack_rate"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="120"/>
+
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -83,7 +95,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="right|center_vertical"
                 android:layout_marginRight="20dp">
 
                 <TextView
@@ -91,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:text="已售"/>
                 <TextView
-                    android:id="@+id/number"
+                    android:id="@+id/sold_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 

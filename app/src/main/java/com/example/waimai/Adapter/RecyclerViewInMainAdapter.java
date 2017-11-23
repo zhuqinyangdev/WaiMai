@@ -1,8 +1,16 @@
 package com.example.waimai.Adapter;
 
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.waimai.R;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by 32033 on 2017/11/21.
@@ -11,15 +19,24 @@ import android.view.ViewGroup;
 public class RecyclerViewInMainAdapter extends RecyclerView.Adapter<RecyclerViewInMainAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView shop_Phote; //recyclerview显示的照片
+        TextView price; //销售价格
+        TextView sold_number; //销售数量
+        TextView rack_rate; //门市价
         public ViewHolder(View view){
             super(view);
+            shop_Phote = (ImageView)view.findViewById(R.id.shop_photo);
+            price = (TextView)view.findViewById(R.id.price);
+            sold_number = (TextView)view.findViewById(R.id.sold_number);
+            rack_rate = (TextView)view.findViewById(R.id.rack_rate);
         }
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //ViewHolder holder = new ViewHolder();
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mian_recyclerview_layout,parent,false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     @Override
@@ -29,6 +46,6 @@ public class RecyclerViewInMainAdapter extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 9;
     }
 }

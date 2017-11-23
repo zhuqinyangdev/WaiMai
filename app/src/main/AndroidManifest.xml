@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activitys.LoginAndRegister.EnterPhone"></activity>
+        <activity android:name=".LoginAndRegister.EnterPhone" />
+        <activity android:name=".MainActivities.MainFirst"></activity>
     </application>
 
 </manifest>

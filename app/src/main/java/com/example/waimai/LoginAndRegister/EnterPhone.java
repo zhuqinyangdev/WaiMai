@@ -1,4 +1,4 @@
-package com.example.waimai.Activitys.LoginAndRegister;
+package com.example.waimai.LoginAndRegister;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
