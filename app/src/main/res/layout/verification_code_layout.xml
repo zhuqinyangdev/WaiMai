@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/actionbar_close"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="35sp"
+            android:text="请输入验证码"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请输入发送至邮箱的6位验证码"/>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="1dp"
+            android:background="#b8b8b8"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/et_verification_code"
+            android:layout_width="280dp"
+            android:layout_height="35dp"
+            android:inputType="number"
+            android:maxLength="6"
+            android:background="#ebebeb"
+            android:layout_marginTop="10dp"
+            android:textCursorDrawable="@drawable/edittext_cursor"
+            android:paddingLeft="5dp"
+            android:hint="验证码"/>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="1dp"
+            android:background="#b8b8b8"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/btn_next_in_verification_code"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_shape"
+            android:text="下 一 步"/>
+
+    </LinearLayout>
+</LinearLayout>

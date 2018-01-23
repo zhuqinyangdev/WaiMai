@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/tab_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/tv_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher_home"
+            android:background="@drawable/s"
+            android:gravity="center_horizontal"
+            android:textSize="12sp"
+            android:text="首页"/>
+
+        <TextView
+            android:id="@+id/tv_indent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher_indent"
+            android:background="@drawable/s"
+            android:gravity="center_horizontal"
+            android:textSize="12sp"
+            android:text="订单"/>
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher_account"
+            android:background="@drawable/s"
+            android:gravity="center_horizontal"
+            android:textSize="12sp"
+            android:text="我的"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tab_menu"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/actionbar_close"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10dp">
+
+        <EditText
+            android:id="@+id/old_password"
+            android:layout_width="280dp"
+            android:layout_height="35dp"
+            android:inputType="number"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/no_border"
+            android:textCursorDrawable="@drawable/edittext_cursor"
+            android:paddingLeft="5dp"
+            android:hint="旧密码"/>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="1dp"
+            android:background="#b8b8b8"
+            android:layout_marginTop="7dp" />
+
+        <EditText
+            android:id="@+id/new_password"
+            android:layout_width="280dp"
+            android:layout_height="35dp"
+            android:inputType="number"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/no_border"
+            android:textCursorDrawable="@drawable/edittext_cursor"
+            android:paddingLeft="5dp"
+            android:hint="新密码"/>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="1dp"
+            android:background="#b8b8b8"
+            android:layout_marginTop="7dp" />
+
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="280dp"
+            android:layout_height="35dp"
+            android:inputType="number"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/no_border"
+            android:textCursorDrawable="@drawable/edittext_cursor"
+            android:paddingLeft="5dp"
+            android:hint="确认密码"/>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="1dp"
+            android:background="#b8b8b8"
+            android:layout_marginTop="7dp" />
+
+        <Button
+            android:id="@+id/btn_next_in_editpwd"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_shape"
+            android:text="下 一 步"/>
+
+    </LinearLayout>
+
+</LinearLayout>

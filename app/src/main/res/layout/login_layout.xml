@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
-        android:id="@+id/login_bar"
+        android:id="@+id/rl_login_bar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
@@ -20,7 +20,7 @@
             android:text="酷奇"/>
 
         <ImageButton
-            android:id="@+id/login_layout_exit"
+            android:id="@+id/ib_login_layout_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -44,7 +44,6 @@
         android:layout_gravity="center_vertical">
 
         <TextView
-            android:id="@+id/denglu_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/linearLayout"
@@ -66,21 +65,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="2"
-                    android:text="用户名"
-                    android:textColor="#000000"
-                    android:textSize="16dp" />
 
                 <EditText
-                    android:id="@+id/LoginId"
+                    android:id="@+id/et_UserCode"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="6"
-                    android:background="@drawable/login_edittext_shape"
+                    android:background="@drawable/no_border"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:hint="邮箱"
                     android:paddingLeft="5dp" />
@@ -89,36 +80,50 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/linearLayout"
-                    android:layout_alignLeft="@+id/linearLayout"
-                    android:layout_alignStart="@+id/linearLayout"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="2"
-                    android:text="    密码"
-                    android:textColor="#000000"
-                    android:textSize="16dp" />
+
 
                 <EditText
-                    android:id="@+id/loginPwd"
+                    android:id="@+id/et_UserPwd"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="6"
-                    android:background="@drawable/login_edittext_shape"
+                    android:background="@drawable/no_border"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:hint="密码"
                     android:paddingLeft="5dp" />
 
+                <ImageView
+                    android:id="@+id/im_show"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@mipmap/visible"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/im_unshow"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@mipmap/invisible"
+                    android:visibility="gone"/>
+
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black"/>
+
             <Button
-                android:id="@+id/login_button"
+                android:id="@+id/btn_login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -131,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
                 <TextView
-                    android:id="@+id/forget_pwd"
+                    android:id="@+id/tv_forget_pwd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#42b4d8"
@@ -142,7 +147,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/register"
+            android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/linearLayout"

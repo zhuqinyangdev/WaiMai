@@ -25,10 +25,10 @@ public class RecyclerViewInMainAdapter extends RecyclerView.Adapter<RecyclerView
         TextView rack_rate; //门市价
         public ViewHolder(View view){
             super(view);
-            shop_Phote = (ImageView)view.findViewById(R.id.shop_photo);
-            price = (TextView)view.findViewById(R.id.price);
-            sold_number = (TextView)view.findViewById(R.id.sold_number);
-            rack_rate = (TextView)view.findViewById(R.id.rack_rate);
+            shop_Phote = (ImageView)view.findViewById(R.id.iv_shop_photo);
+            price = (TextView)view.findViewById(R.id.tv_price);
+            sold_number = (TextView)view.findViewById(R.id.tv_sold_number);
+            rack_rate = (TextView)view.findViewById(R.id.tv_rack_rate);
         }
     }
 
@@ -46,6 +46,6 @@ public class RecyclerViewInMainAdapter extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public int getItemCount() {
-        return 9;
+        return 15;
     }
 }

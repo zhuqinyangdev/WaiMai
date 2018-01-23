@@ -3,42 +3,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/login_bar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:background="#ededed">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher_back"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textSize="16dp"
-                android:textColor="#000000"
-                android:text="返回"/>
-
-        </LinearLayout>
-        <ImageButton
-            android:id="@+id/login_layout_exit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_power_settings_new_black_24dp" />
-
-    </RelativeLayout>
+    <include layout="@layout/loading_layout"
+        android:id="@+id/loading"/>
+    <include layout="@layout/actionbar_close"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -56,10 +24,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
-                android:textSize="35dp"
+                android:textSize="35sp"
                 android:text="输入邮箱地址"/>
 
             <LinearLayout
+                android:id="@+id/tiaokuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TextView
@@ -68,7 +37,7 @@
                     android:textSize="12dp"
                     android:text="注册即代表阅读并同意"/>
                 <TextView
-                    android:id="@+id/terms_of_use"
+                    android:id="@+id/tv_terms_of_use"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#16c9c9"
@@ -80,7 +49,7 @@
                     android:textSize="12dp"
                     android:text="和"/>
                 <TextView
-                    android:id="@+id/privacy_policy"
+                    android:id="@+id/tv_privacy_policy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#16c9c9"
@@ -89,7 +58,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/chose_country"
+                android:id="@+id/ll_chose_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -104,7 +73,7 @@
                     android:text="国家/地区"/>
 
                 <TextView
-                    android:id="@+id/country"
+                    android:id="@+id/tv_country"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -133,12 +102,11 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp">
                 <EditText
-                    android:id="@+id/phone_number"
+                    android:id="@+id/et_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
                     android:background="@null"
-                    android:maxLength="11"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:hint="邮箱"/>
 
@@ -151,7 +119,7 @@
                 android:background="#bababa"/>
 
             <Button
-                android:id="@+id/next_phone"
+                android:id="@+id/btn_next_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
