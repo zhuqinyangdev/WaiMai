@@ -11,4 +11,6 @@ public class Operate {
     public static final String USER_REGISTER = "Register"; //用户注册
     public static final String SEND_VERIFICATION_CODE = "SendVerificationCode"; //发送验证码
     public static final String EDIT_PASSWORD = "Edit_Password";
+    public static final String UPLOAD_HEAD_IMAGE = "UploadHeadImage"; //上传头像
+    public static final String DOWNLOAD_HEAD_IMAGE = "DownloadHeadImage"; //下载头像
 }

@@ -15,11 +15,10 @@ import com.example.waimai.R;
 import com.example.waimai.Tools.JSONTools;
 import com.example.waimai.Tools.Tools;
 import com.example.waimai.Util.HttpUtil;
-import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
-import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -29,9 +28,9 @@ import okhttp3.Response;
 public class EditPassword extends AppCompatActivity {
 
     private String Email;
-    private EditText oldPassword,newPassword,confirmPasswrod;
+    private EditText oldPassword, newPassword, confirmPasswrod;
     private Button next;
-    private NiftyDialogBuilder dialogBuilder; //提示框
+    private SweetAlertDialog sweetAlertDialog; //提示框
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +44,28 @@ public class EditPassword extends AppCompatActivity {
         LoginActivity.actionList.add(this);
     }
 
-    private void initView(){
-        oldPassword = (EditText)findViewById(R.id.old_password);
-        newPassword = (EditText)findViewById(R.id.new_password);
-        confirmPasswrod = (EditText)findViewById(R.id.confirm_password);
-        next = (Button)findViewById(R.id.btn_next_in_editpwd);
+    private void initView() {
+        oldPassword = (EditText) findViewById(R.id.old_password);
+        newPassword = (EditText) findViewById(R.id.new_password);
+        confirmPasswrod = (EditText) findViewById(R.id.confirm_password);
+        next = (Button) findViewById(R.id.btn_next_in_editpwd);
     }
 
-    private void bindTest(){
+    private void bindTest() {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(check()){
+                if (check()) {
                     RequestBody requestBody = new FormBody.Builder()
-                            .add("UserCode",Email)
-                            .add("oldPWD",oldPassword.getText().toString())
-                            .add("newPWD",newPassword.getText().toString())
+                            .add("UserCode", Email)
+                            .add("oldPWD", oldPassword.getText().toString())
+                            .add("newPWD", newPassword.getText().toString())
                             .build();
                     HttpUtil.sendPostRequest(Operate.EDIT_PASSWORD, new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
                             e.printStackTrace();
-                            Toast.makeText(EditPassword.this,"发生未知错误",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditPassword.this, "发生未知错误", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
@@ -74,7 +73,7 @@ public class EditPassword extends AppCompatActivity {
                             String result = JSONTools.getResult(response.body().string());
                             showDialog(result);
                         }
-                    },requestBody);
+                    }, requestBody);
                 }
             }
         });
@@ -84,49 +83,51 @@ public class EditPassword extends AppCompatActivity {
      * 显示提示框
      */
     String message = ""; //要显示的信息
-    private void showDialog(final String result){
-        if(result.equals(Successful.SUCCEED)){
+
+    private void showDialog(final String result) {
+        if (result.equals(Successful.SUCCEED)) {
             message = "密码修改成功";
-        } else if(result.equals(Error.ERROR_PASSWORD)){
+        } else if (result.equals(Error.ERROR_PASSWORD)) {
             message = "密码与账号不匹配";
-        } else if(result.equals(Error.ERROR)){
+        } else if (result.equals(Error.ERROR)) {
             message = "发生未知错误";
         }
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                dialogBuilder= Tools.showMessage(EditPassword.this,"提示",message);
-                if(result.equals(Successful.SUCCEED)){
-                    dialogBuilder.setButton1Click(new View.OnClickListener() {
+                sweetAlertDialog = Tools.showError(EditPassword.this, "提示", message);
+                if (result.equals(Successful.SUCCEED)) {
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
                             EnterMail.closeAllAction();
                             EditPassword.this.finish();
                         }
                     });
                 }
-                if(result.equals(Error.ERROR) || result.equals(Error.ERROR_PASSWORD)){
-                    dialogBuilder.setButton1Click(new View.OnClickListener() {
+                if (result.equals(Error.ERROR) || result.equals(Error.ERROR_PASSWORD)) {
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
-                        public void onClick(View v) {
-                            if(dialogBuilder.isShowing()){
-                                dialogBuilder.dismiss();
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            if (sweetAlertDialog.isShowing()) {
+                                sweetAlertDialog.dismiss();
                             }
                         }
                     });
                 }
-                dialogBuilder.show();
+                sweetAlertDialog.show();
             }
         });
     }
 
     /**
      * 检查文本框是否符合要求
+     *
      * @return
      */
-    private boolean check(){
-        if(!newPassword.getText().toString().equals(confirmPasswrod.getText().toString())){
-            dialogBuilder= Tools.showMessage(EditPassword.this,"警告","两次输入的密码不一致请重新输入");
+    private boolean check() {
+        if (!newPassword.getText().toString().equals(confirmPasswrod.getText().toString())) {
+            sweetAlertDialog = Tools.showBasic(EditPassword.this, "警告", "两次输入的密码不一致请重新输入");
             return false;
         }
         return true;

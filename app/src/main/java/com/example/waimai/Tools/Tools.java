@@ -1,31 +1,50 @@
 package com.example.waimai.Tools;
 
 import android.content.Context;
-
-import com.example.waimai.LoginAndRegister.EditPassword;
 import com.example.waimai.R;
-import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
-import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by 32033 on 2018/1/1.
  */
 
 public class Tools {
+    private static SweetAlertDialog dialogBuilder = null;
 
-    public static NiftyDialogBuilder showMessage(Context context,String title,String message){
-        NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(context);
-        dialogBuilder.withTitle(title)
-                .withButton1Text("确认")
-                .withMessage(message)
-                .withTitleColor("#000000")
-                .withDividerColor("#ededed")
-                .withMessageColor("#000000")
-                .withDialogColor("#FFFFFF")
-                .withDuration(500)
-                .withButtonDrawable(R.drawable.button_shape)
-                .withEffect(Effectstype.SlideBottom)
-                .isCancelableOnTouchOutside(false) ;
-        return dialogBuilder;
+    public static SweetAlertDialog showError(Context context, String title, String message){
+        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText(title)
+                .setContentText(message)
+                .setConfirmText("确认");
+        sweetAlertDialog.show();
+        return sweetAlertDialog;
+    }
+
+    public static SweetAlertDialog showSuccess(Context context, String title, String message){
+        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText(title)
+                .setContentText(message)
+                .setConfirmText("确认");
+        sweetAlertDialog.show();
+        return sweetAlertDialog;
+    }
+
+    public static SweetAlertDialog showWarn(Context context, String title, String message){
+        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText(title)
+                .setContentText(message)
+                .setConfirmText("确认");
+        sweetAlertDialog.show();
+        return sweetAlertDialog;
+    }
+
+    public static SweetAlertDialog showBasic(Context context, String title, String message){
+        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context)
+                .setTitleText(title)
+                .setContentText(message)
+                .setConfirmText("确认");
+        sweetAlertDialog.show();
+        return sweetAlertDialog;
     }
 }

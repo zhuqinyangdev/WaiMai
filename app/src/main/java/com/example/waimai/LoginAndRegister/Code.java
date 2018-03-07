@@ -15,7 +15,7 @@ import com.example.waimai.Fields.ActionOperate;
 import com.example.waimai.Fields.Operate;
 import com.example.waimai.R;
 
-public class Code extends AppCompatActivity implements View.OnClickListener{
+public class Code extends AppCompatActivity implements View.OnClickListener {
 
     private String LastOperate;
     private String Code;
@@ -38,30 +38,30 @@ public class Code extends AppCompatActivity implements View.OnClickListener{
         LoginActivity.actionList.add(this);
     }
 
-    private void initView(){
-        et_code = (EditText)findViewById(R.id.et_verification_code);
-        btn_next = (Button)findViewById(R.id.btn_next_in_verification_code);
+    private void initView() {
+        et_code = (EditText) findViewById(R.id.et_verification_code);
+        btn_next = (Button) findViewById(R.id.btn_next_in_verification_code);
     }
 
     /**
      * 添加控件事件
      */
-    private void initTest(){
+    private void initTest() {
         btn_next.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_next_in_verification_code:
-                if(Code.equals(et_code.getText().toString())) {
-                    if(LastOperate.equals(Operate.USER_REGISTER)){
-                        Intent intent = new Intent(Code.this,UserInfo.class);
-                        intent.putExtra("Email",Email);
+                if (Code.equals(et_code.getText().toString())) {
+                    if (LastOperate.equals(Operate.USER_REGISTER)) {
+                        Intent intent = new Intent(Code.this, UserInfo.class);
+                        intent.putExtra("Email", Email);
                         startActivity(intent);
-                    } else if(LastOperate.equals(ActionOperate.FORGET_PASSWORD)){
-                        Intent intent = new Intent(Code.this,EditPassword.class);
-                        intent.putExtra("Email",Email);
+                    } else if (LastOperate.equals(ActionOperate.FORGET_PASSWORD)) {
+                        Intent intent = new Intent(Code.this, EditPassword.class);
+                        intent.putExtra("Email", Email);
                         startActivity(intent);
                     }
 

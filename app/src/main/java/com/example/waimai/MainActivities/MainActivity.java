@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,12 +20,18 @@ import com.example.waimai.R;
 
 import org.w3c.dom.Text;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
+    private int selectId = 1;
 
+    private String Email;
     private Context context;
     private TextView home,indent,account;
+
+    private CircleImageView circleImageView;
 
     private Main1 main1; //首页碎片
     private Main3 main3; //账户碎片
@@ -36,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_layout);
         initView();
-
+        Email = getIntent().getExtras().getString("Email");
         transaction = getFragmentManager().beginTransaction();
         hideAllFragment(transaction);
         if(main1 == null){
@@ -62,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         account.setOnClickListener(this);
     }
 
+    private void initViewMain3(){
+        Main3_Helper main3Helper = new Main3_Helper();
+        main3Helper.init(main3);
+    }
+
     /**
      * 隐藏所有的碎片
      * @param transaction 碎片的事物管理
@@ -69,6 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void hideAllFragment(FragmentTransaction transaction){
         if(main1!=null){
             transaction.hide(main1);
+        }
+
+        if(main3!=null){
+            transaction.hide(main3);
         }
     }
 
@@ -103,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hideAllFragment(transaction);
         switch(view.getId()){
             case R.id.tv_home:
+                selectId = 1;
                 if(main1 == null){
                     main1 = new Main1(context);
                     transaction.add(R.id.fl_main,main1);
@@ -112,10 +129,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.tv_indent:
+                selectId = 2;
                 break;
             case R.id.tv_account:
+                selectId = 3;
                 if(main3 == null){
-                    main3 = new Main3(context);
+                    main3 = new Main3(MainActivity.this,Email);
                     transaction.add(R.id.fl_main,main3);
                 } else {
                     transaction.show(main3);
@@ -123,5 +142,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         transaction.commit();
+
     }
 }

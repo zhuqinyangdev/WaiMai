@@ -6,44 +6,45 @@
 
     <ImageView
         android:id="@+id/iv_shop_photo"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginLeft="10dp"
-        android:background="@drawable/wanzhoukaoyu"/>
+        android:background="@drawable/wanzhoukaoyu" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            android:id="@+id/shop_name"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:text="万州烤鱼"/>
-    </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+            <TextView
+                android:id="@+id/shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="万州烤鱼"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_shop_description"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="建议2-3人用餐，免费WIFI使用"/>
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_shop_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="建议2-3人用餐，免费WIFI使用" />
+
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -58,34 +59,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:textColor="#17bdc0"
-                    android:text="￥"/>
+                    android:text="￥"
+                    android:textColor="#17bdc0" />
 
                 <TextView
                     android:id="@+id/tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:text="108"
                     android:textColor="#17bdc0"
-                    android:textSize="18dp"
-                    android:text="108"/>
+                    android:textSize="18dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="门市价" />
 
-                <TextView
-                    android:id="@+id/tv_rack_rate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:text="120"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="门市价" />
+
+                    <TextView
+                        android:id="@+id/tv_rack_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="120" />
 
                 </LinearLayout>
 
@@ -101,20 +103,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已售"/>
+                    android:text="已售" />
+
                 <TextView
                     android:id="@+id/tv_sold_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="248"/>
+                    android:text="248" />
 
             </LinearLayout>
 
 
-
         </FrameLayout>
 
-   </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

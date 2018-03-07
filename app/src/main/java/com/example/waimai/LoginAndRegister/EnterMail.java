@@ -34,18 +34,21 @@ import okhttp3.FormBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class EnterMail extends AppCompatActivity implements View.OnClickListener{
+public class EnterMail extends AppCompatActivity implements View.OnClickListener {
 
+    public static List<AppCompatActivity> actionList = new ArrayList<>();
     private String LastOperate;
-
     private Button btn_next;
     private EditText et_Mail;
     private LinearLayout tiaokuan;
     private RelativeLayout load;
-
     private int i;//当连接失败时重新连接的次数
 
-    public static List<AppCompatActivity> actionList = new ArrayList<>();
+    public static void closeAllAction() {
+        for (AppCompatActivity activity : EnterMail.actionList) {
+            activity.finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,36 +58,30 @@ public class EnterMail extends AppCompatActivity implements View.OnClickListener
         LastOperate = intent.getExtras().getString("Operate");
         initView();
         initTest();
-        if(!LastOperate.equals(Operate.SEND_VERIFICATION_CODE)){
+        if (!LastOperate.equals(Operate.SEND_VERIFICATION_CODE)) {
             tiaokuan.setVisibility(View.INVISIBLE);
         }
         actionList.add(this);
         LoginActivity.actionList.add(this);
     }
 
-    public static void closeAllAction(){
-        for(AppCompatActivity activity:EnterMail.actionList){
-            activity.finish();
-        }
-    }
-
     /**
      * 初始化控件
      */
-    private void initView(){
-        btn_next = (Button)findViewById(R.id.btn_next_email);
-        et_Mail = (EditText)findViewById(R.id.et_phone_number);
-        load = (RelativeLayout)findViewById(R.id.loading);
-        tiaokuan = (LinearLayout)findViewById(R.id.tiaokuan);
+    private void initView() {
+        btn_next = (Button) findViewById(R.id.btn_next_email);
+        et_Mail = (EditText) findViewById(R.id.et_phone_number);
+        load = (RelativeLayout) findViewById(R.id.loading);
+        tiaokuan = (LinearLayout) findViewById(R.id.tiaokuan);
     }
+
     /**
      * 添加控件的事件
      */
-    private void initTest(){
+    private void initTest() {
         btn_next.setOnClickListener(this);
         //btn_next.setClickable(false);
         et_Mail.addTextChangedListener(new TextWatcher() {
-
 
 
             @Override
@@ -92,21 +89,19 @@ public class EnterMail extends AppCompatActivity implements View.OnClickListener
 
             }
 
-
-
-
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                    if(isEmail(s.toString())) {
-                        btn_next.setBackground(EnterMail.this.getResources().getDrawable(R.drawable.button_shape));
-                        btn_next.setTextColor(EnterMail.this.getResources().getColor(R.color.black));
-                        btn_next.setClickable(true);
-                    } else {
-                        btn_next.setBackground(EnterMail.this.getResources().getDrawable(R.drawable.button_shape_gray));
-                        btn_next.setTextColor(EnterMail.this.getResources().getColor(R.color.gray_text));
-                        //btn_next.setClickable(false);
-                    }
+                if (isEmail(s.toString())) {
+                    btn_next.setBackground(EnterMail.this.getResources().getDrawable(R.drawable.button_shape));
+                    btn_next.setTextColor(EnterMail.this.getResources().getColor(R.color.black));
+                    btn_next.setClickable(true);
+                } else {
+                    btn_next.setBackground(EnterMail.this.getResources().getDrawable(R.drawable.button_shape_gray));
+                    btn_next.setTextColor(EnterMail.this.getResources().getColor(R.color.gray_text));
+                    //btn_next.setClickable(false);
+                }
             }
+
             @Override
             public void afterTextChanged(Editable e) {
             }
@@ -115,6 +110,7 @@ public class EnterMail extends AppCompatActivity implements View.OnClickListener
 
     /**
      * 验证邮箱格式是否正确
+     *
      * @param email 邮箱
      * @return
      */
@@ -128,7 +124,7 @@ public class EnterMail extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_next_email:
                 load.getBackground().setAlpha(10);
                 load.setVisibility(View.VISIBLE);
@@ -142,19 +138,19 @@ public class EnterMail extends AppCompatActivity implements View.OnClickListener
     /**
      * 发起okhttp请求向服务器获得验证码
      */
-    private void getCode(){
+    private void getCode() {
         RequestBody requestBody = new FormBody.Builder()
-                .add("Email",et_Mail.getText().toString())
+                .add("Email", et_Mail.getText().toString())
                 .build();
         HttpUtil.sendPostRequest(Operate.SEND_VERIFICATION_CODE, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
-                if(i<3) {
+                if (i < 3) {
                     i++;
                     getCode();
                 } else {
-                    Toast.makeText(EnterMail.this,"请求服务器失败，请稍后重新尝试",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EnterMail.this, "请求服务器失败，请稍后重新尝试", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -162,23 +158,23 @@ public class EnterMail extends AppCompatActivity implements View.OnClickListener
             public void onResponse(Call call, Response response) throws IOException {
                 String code = response.body().string();
                 //String code = JSONTools.verification_code(response.body().string());
-                if(!code.equals(Error.ERROR)){
-                        Intent intent = new Intent(EnterMail.this, Code.class);
-                        intent.putExtra("Email", et_Mail.getText().toString());
-                        intent.putExtra("Operate",LastOperate);
-                        intent.putExtra("Code","");
-                        Log.d("EnterMail",code);
-                        startActivity(intent);
+                if (!code.equals(Error.ERROR)) {
+                    Intent intent = new Intent(EnterMail.this, Code.class);
+                    intent.putExtra("Email", et_Mail.getText().toString());
+                    intent.putExtra("Operate", LastOperate);
+                    intent.putExtra("Code", "");
+                    Log.d("EnterMail", code);
+                    startActivity(intent);
                 } else {
-                    Toast.makeText(EnterMail.this,"验证码获取失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EnterMail.this, "验证码获取失败", Toast.LENGTH_SHORT).show();
                 }
             }
-        },requestBody);
+        }, requestBody);
     }
 
     @Override
     protected void onRestart() {
-        if(load.getVisibility() == View.VISIBLE){
+        if (load.getVisibility() == View.VISIBLE) {
             load.setVisibility(View.GONE);
         }
         super.onRestart();

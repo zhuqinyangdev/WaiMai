@@ -16,12 +16,13 @@ import com.example.waimai.Fields.Successful;
 import com.example.waimai.Interface.DatePickListener;
 import com.example.waimai.Interface.SingleDialogListener;
 import com.example.waimai.R;
+import com.example.waimai.Tools.BottomDialog;
 import com.example.waimai.Tools.JSONTools;
+import com.example.waimai.Tools.SimpleCamera;
 import com.example.waimai.Tools.SingleDialog;
 import com.example.waimai.Tools.DatePick;
 import com.example.waimai.Tools.Tools;
 import com.example.waimai.Util.HttpUtil;
-import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -29,6 +30,8 @@ import java.util.TooManyListenersException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -39,12 +42,13 @@ public class UserInfo extends AppCompatActivity implements View.OnClickListener 
 
     private String Email;
 
+    private CircleImageView head_image;
     private EditText userPwd,userName,userPhone,userIdCard,userAddress,userDescription;
     private RelativeLayout select_gender,select_birthday;
     private TextView gender,birthday;
     private Button next;
 
-    private NiftyDialogBuilder dialogBuilder;
+    private SweetAlertDialog sweetAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +56,19 @@ public class UserInfo extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.user_info_layout);
         Intent intent = getIntent();
         Email = intent.getStringExtra("Email");
+        String PageName = intent.getExtras().getString("PageName");
         initView();
-        initTest();
+        if (PageName.equals("Main3")){
+            head_image();
+            initTest();
+        } else {
+            initTest();
+        }
         EnterMail.actionList.add(this);
     }
 
     private void initView(){
+        head_image = (CircleImageView)findViewById(R.id.user_image);
         userPwd = (EditText)findViewById(R.id.et_userPassWord);
         userName = (EditText)findViewById(R.id.et_userName);
         userPhone = (EditText)findViewById(R.id.et_userPhone);
@@ -74,6 +85,12 @@ public class UserInfo extends AppCompatActivity implements View.OnClickListener 
         select_gender.setOnClickListener(this);
         select_birthday.setOnClickListener(this);
         next.setOnClickListener(this);
+        head_image.setOnClickListener(this);
+    }
+
+    private void head_image(){
+        head_image.setVisibility(View.VISIBLE);
+
     }
 
     /**
@@ -156,14 +173,26 @@ public class UserInfo extends AppCompatActivity implements View.OnClickListener 
                                 UserInfo.this.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        dialogBuilder = Tools.showMessage(UserInfo.this,"提示","注册成功");
-                                        dialogBuilder.show();
+                                        Tools tools = new Tools();
+                                        sweetAlertDialog = tools.showSuccess(UserInfo.this,"提示","注册成功");
                                     }
                                 });
                             }
                         }
                     }, requestBody);
                 }
+                break;
+            case R.id.user_image:
+                /*BottomDialog dialog = new BottomDialog(UserInfo.this);
+                dialog.show(UserInfo.this);*/
+                try{
+                    Intent intent = new Intent(UserInfo.this,SimpleCamera.class);
+                    intent.putExtra("Email",Email);
+                    startActivity(intent);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 break;
         }
     }

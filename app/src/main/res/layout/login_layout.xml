@@ -104,14 +104,14 @@
 
                 <ImageView
                     android:id="@+id/im_show"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:background="@mipmap/visible"
                     android:visibility="gone"/>
                 <ImageView
                     android:id="@+id/im_unshow"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:background="@mipmap/invisible"
                     android:visibility="gone"/>
 
