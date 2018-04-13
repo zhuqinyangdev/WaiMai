@@ -104,6 +104,7 @@ public class EditPassword extends AppCompatActivity {
                             EditPassword.this.finish();
                         }
                     });
+                    sweetAlertDialog.show();
                 }
                 if (result.equals(Error.ERROR) || result.equals(Error.ERROR_PASSWORD)) {
                     sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -114,6 +115,7 @@ public class EditPassword extends AppCompatActivity {
                             }
                         }
                     });
+                    sweetAlertDialog.show();
                 }
                 sweetAlertDialog.show();
             }

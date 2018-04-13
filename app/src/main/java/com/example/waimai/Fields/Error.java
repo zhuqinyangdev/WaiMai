@@ -12,4 +12,6 @@ public class Error {
     public static final String ERROR_PASSWORD = "Error_Password";
     //取消
     public static final String CANCEL = "Cancel";
+    //用户已经注册过商铺
+    public static final String STORE_EXIST = "Store_Exist";
 }

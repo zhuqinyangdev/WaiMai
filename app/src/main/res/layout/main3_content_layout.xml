@@ -11,6 +11,22 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/gray_text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/black"
+            android:text="酷奇消息"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
@@ -22,10 +38,10 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/clothes"/>
+                    android:background="@drawable/xiaoxi"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -45,10 +61,10 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/clothes"/>
+                    android:background="@drawable/shangpu"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -56,7 +72,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
-                    android:text="店铺" />
+                    android:text="我的店铺" />
             </LinearLayout>
 
             <LinearLayout
@@ -68,10 +84,10 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/clothes"/>
+                    android:background="@drawable/guanzhu"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,10 +107,10 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/clothes"/>
+                    android:background="@drawable/youhuiquan"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -120,10 +136,10 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/clothes"/>
+                    android:background="@drawable/zhanghao"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -143,10 +159,10 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/clothes"/>
+                    android:background="@drawable/gengduo2"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -232,10 +248,10 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="45dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/clothes"/>
+                android:background="@drawable/qianbao"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -255,10 +271,10 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="45dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/clothes"/>
+                android:background="@drawable/hongbao"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -278,10 +294,10 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="45dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/clothes"/>
+                android:background="@drawable/yinghangka"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -301,10 +317,10 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="45dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/clothes"/>
+                android:background="@drawable/yue"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -347,10 +363,10 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/clothes"/>
+                android:background="@drawable/hezuo"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -370,10 +386,10 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/clothes"/>
+                android:background="@drawable/lianxiwomen"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -393,10 +409,10 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/clothes"/>
+                android:background="@drawable/guanyukuqi"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -404,7 +420,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"
-                android:text="关于美团" />
+                android:text="关于酷奇" />
         </LinearLayout>
 
         <LinearLayout
@@ -416,10 +432,10 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/clothes"/>
+                android:background="@drawable/gengguo"/>
 
             <TextView
                 android:layout_width="wrap_content"

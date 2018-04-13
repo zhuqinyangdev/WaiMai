@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String Email;
     private Context context;
-    private TextView home,indent,account;
+    private LinearLayout home,indent,account;
 
     private CircleImageView circleImageView;
 
@@ -60,10 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void initView(){
         context = this;
-        home = (TextView)findViewById(R.id.tv_home);
-        indent = (TextView)findViewById(R.id.tv_indent);
-        account = (TextView)findViewById(R.id.tv_account);
-        change();
+        home = (LinearLayout) findViewById(R.id.tv_home);
+        indent = (LinearLayout)findViewById(R.id.tv_indent);
+        account = (LinearLayout)findViewById(R.id.tv_account);
+        //change();
         home.setOnClickListener(this);
         indent.setOnClickListener(this);
         account.setOnClickListener(this);
@@ -98,20 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         account.setSelected(false);
     }
 
-    /**
-     * 改变底部导航栏图片大小
-     */
-    public void change(){
-        Drawable dra1= getResources().getDrawable(R.mipmap.ic_launcher_home);
-        dra1.setBounds( 0, 0, 80,80);
-        home.setCompoundDrawables(null,dra1,null,null);
-        Drawable dra2= getResources().getDrawable(R.mipmap.ic_launcher_indent);
-        dra2.setBounds( 0, 0, 80,80);
-        indent.setCompoundDrawables(null,dra2,null,null);
-        Drawable dra3= getResources().getDrawable(R.mipmap.ic_launcher_account);
-        dra3.setBounds( 0, 0, 80,80);
-        account.setCompoundDrawables(null,dra3,null,null);
-    }
+
 
     @Override
     public void onClick(View view) {

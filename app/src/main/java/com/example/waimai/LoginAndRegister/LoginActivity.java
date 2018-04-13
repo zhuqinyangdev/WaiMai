@@ -2,7 +2,6 @@ package com.example.waimai.LoginAndRegister;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -165,9 +164,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 HttpUtil.sendPostRequest(Operate.USER_LOGIN, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
+                        LoginActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                sweetAlertDialog = Tools.showError(LoginActivity.this, "提示", "无法连接服务器，请检查您的网络是否正确！");
+                                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismiss();
+                                    }
+                                });
+                                sweetAlertDialog.show();
+                            }
+                        });
                         e.printStackTrace();
-                    }
 
+                    }
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String request = JSONTools.getResult(response.body().string());
@@ -191,6 +203,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                             sweetAlertDialog.dismiss();
                                         }
                                     });
+                                    sweetAlertDialog.show();
                                 }
                             });
                         }

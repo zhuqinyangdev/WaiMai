@@ -49,6 +49,15 @@ public class HttpUtil {
         if (operate.equals(Operate.DOWNLOAD_HEAD_IMAGE)) {
             address += "/file/download/head_portrait";
         }
+        if(operate.equals(Operate.REGISTER_STORE)){
+            address += "/store/register";
+        }
+        if(operate.equals(Operate.UPLOAD_STORE_IMAGE)){
+            address += "/file/upload/store_image";
+        }
+        if(operate.equals(Operate.QUERY_USER_STORE)){
+            address += "/store/queryUserStore";
+        }
     }
 
     /**

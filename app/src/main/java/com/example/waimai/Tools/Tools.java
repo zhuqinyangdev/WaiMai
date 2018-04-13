@@ -1,6 +1,8 @@
 package com.example.waimai.Tools;
 
 import android.content.Context;
+import android.graphics.Color;
+
 import com.example.waimai.R;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -10,14 +12,18 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 
 public class Tools {
-    private static SweetAlertDialog dialogBuilder = null;
 
     public static SweetAlertDialog showError(Context context, String title, String message){
         SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText(title)
                 .setContentText(message)
                 .setConfirmText("确认");
-        sweetAlertDialog.show();
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
         return sweetAlertDialog;
     }
 
@@ -26,7 +32,12 @@ public class Tools {
                 .setTitleText(title)
                 .setContentText(message)
                 .setConfirmText("确认");
-        sweetAlertDialog.show();
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
         return sweetAlertDialog;
     }
 
@@ -35,7 +46,12 @@ public class Tools {
                 .setTitleText(title)
                 .setContentText(message)
                 .setConfirmText("确认");
-        sweetAlertDialog.show();
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
         return sweetAlertDialog;
     }
 
@@ -44,7 +60,20 @@ public class Tools {
                 .setTitleText(title)
                 .setContentText(message)
                 .setConfirmText("确认");
-        sweetAlertDialog.show();
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
         return sweetAlertDialog;
+    }
+
+    public static SweetAlertDialog progress(Context context,String message){
+        SweetAlertDialog pDialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText(message);
+        pDialog.setCancelable(true);
+        return pDialog;
     }
 }

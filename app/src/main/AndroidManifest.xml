@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <user-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -36,6 +36,9 @@
         <activity android:name=".OtherActivity.Cooperation2" />
         <activity android:name=".Tools.SelectImageFromGallery"></activity>
         <activity android:name=".Tools.SimpleCameraForAll"></activity>
+
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="0cd2d900bf711f744d720e07b108ca0e">
+        </meta-data>
     </application>
 
 </manifest>

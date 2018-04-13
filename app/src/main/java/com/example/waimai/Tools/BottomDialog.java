@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.waimai.Fields.Activities;
+import com.example.waimai.Interface.BottomSelectListener;
 import com.example.waimai.LoginAndRegister.EnterMail;
 import com.example.waimai.LoginAndRegister.UserInfo;
 import com.example.waimai.OtherActivity.Cooperation2;
@@ -23,25 +24,49 @@ import com.example.waimai.R;
 
 public class BottomDialog implements View.OnClickListener {
 
+    //宽高比
+    private int aspectX,aspectY;
+    //宽高长
+    private int outputX,outputY;
+
     private View inflate;
     private TextView choosePhoto;
     private TextView takePhoto;
     private Dialog dialog;
 
+    //声明要启动活动
+    Intent intent = null;
+
+    //声明对象
     private UserInfo userInfo;
     private Cooperation2 cooperation2;
+
     private String Email, page;
 
-    public BottomDialog(UserInfo context, String page,String Email) {
-        this.userInfo = context;
-        this.page = page;
+    public BottomDialog(UserInfo userInfo,String Email,int aspectX,int aspectY,int outputX,int outputY) {
+        this.userInfo = userInfo;
         this.Email = Email;
+        initData(aspectX,aspectY,outputX,outputY);
     }
 
-    public BottomDialog(Cooperation2 context, String page,String Email) {
-        this.cooperation2 = context;
-        this.page = page;
+    public BottomDialog(Cooperation2 cooperation2,String Email,int aspectX,int aspectY,int outputX,int outputY) {
+        this.cooperation2 = cooperation2;
         this.Email = Email;
+        initData(aspectX,aspectY,outputX,outputY);
+    }
+
+    /**
+     * 初始化宽高比设置
+     * @param aspectX 宽占的比列
+     * @param aspectY 高占的比列
+     * @param outputX 宽有多长
+     * @param outputY 高有多长
+     */
+    public void initData(int aspectX,int aspectY,int outputX,int outputY){
+        this.aspectX = aspectX;
+        this.aspectY = aspectY;
+        this.outputX = outputX;
+        this.outputY = outputY;
     }
 
     public void show(Context context) {
@@ -67,27 +92,47 @@ public class BottomDialog implements View.OnClickListener {
         dialog.show();//显示对话框
     }
 
+    //初始化相机Intent
+    public void initIntentForCamera(){
+        if(cooperation2 != null) {
+            intent = new Intent(cooperation2,SimpleCameraForAll.class);
+            setIntent();
+            cooperation2.startActivityForResult(intent, 0);
+        } else if(userInfo != null) {
+            intent = new Intent(userInfo,SimpleCameraForAll.class);
+            setIntent();
+            userInfo.startActivityForResult(intent, 0);
+        }
+    }
+
+    //初始化图册Intent
+    public void initIntentForGallery(){
+        if(cooperation2 != null) {
+            intent = new Intent(cooperation2,SelectImageFromGallery.class);
+            setIntent();
+            cooperation2.startActivityForResult(intent, 0);
+        } else if(userInfo != null) {
+            intent = new Intent(userInfo,SelectImageFromGallery.class);
+            setIntent();
+            userInfo.startActivityForResult(intent, 0);
+        }
+    }
+
+    //设置宽高比
+    public void setIntent(){
+        intent.putExtra(SimpleCameraForAll.APSPECTX,aspectX);
+        intent.putExtra(SimpleCameraForAll.APSPECTY,aspectY);
+        intent.putExtra(SimpleCameraForAll.OUTPUTX,outputX);
+        intent.putExtra(SimpleCameraForAll.OUTPUTY,outputY);
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.takePhoto:
-                /*if (page.equals("")) {
-                    Intent intent = new Intent(context, UserInfo.class);
-                    context.startActivity(intent);
-                    Log.d("BottomDialog", "点击了拍照");
-                } else if (page.equals("Cooperation2")) {
-
-                }*/
-                if (page.equals(Activities.COOPERATION2)) {
-                    Intent intent = new Intent(cooperation2, SimpleCameraForAll.class);
-                    cooperation2.startActivityForResult(intent, 0);
-                }
+                initIntentForCamera();
                 break;
             case R.id.choosePhoto:
-                if (page.equals(Activities.COOPERATION2)) {
-                    Intent intent = new Intent(cooperation2, SelectImageFromGallery.class);
-                    cooperation2.startActivityForResult(intent, 0);
-                }
+                initIntentForGallery();
                 break;
         }
         dialog.dismiss();
